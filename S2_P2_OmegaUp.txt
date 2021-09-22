@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+
+#define ll long long
+
+int main()
+{
+    ll int n, c, aux;
+    cin >> n;
+    if (0<=n && n<=1000000000){
+        c=0;
+        ll int numeros[1000];
+        for(ll i = 1;  i <= sqrt(n); i++)
+        {
+            if (n%i==0)
+            {
+                if (n/i!=i){
+                    numeros[c]=i;
+                    numeros[c+1]=n/i;
+                    c++;
+                    c++;
+                }else{
+                    numeros[c]=i;
+                    c++;
+                }
+            }
+        }
+        for (int h =0; h<c;h++)
+        {
+                for (int k=h+1;k<c;k++)
+                {
+                    if(numeros[h]>numeros[k])
+                    {
+                        aux=numeros[h];
+                        numeros[h]=numeros[k];
+                        numeros[k]=aux;
+                    }
+                }
+        }
+        for(int j=0; j<c; j++){
+            cout << numeros[j] <<" ";
+        }
+    }
+}
